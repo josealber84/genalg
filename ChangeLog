@@ -1,3 +1,7 @@
+version 0.0.8
+-------------------------------------
+* removed redundant 'Depends: R' line in DESCRIPTION
+
 version 0.0.7
 -------------------------------------
 * added two general references about genetic algorithms
