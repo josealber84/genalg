@@ -41,6 +41,15 @@ rbga(stringMin=c(), stringMax=c(),
   \item{verbose}{if true the algorithm will be more verbose. By default False.}
   \item{suggestions}{optional list of suggested chromosomes}
 }
+\section{References}{
+  C.B. Lucasius and G. Kateman (1993).
+  Understanding and using genetic algorithms - Part 1. Concepts, properties and context.
+  \emph{Chemometrics and Intelligent Laboratory Systems 19:1-33}.
+
+  C.B. Lucasius and G. Kateman (1994).
+  Understanding and using genetic algorithms - Part 2. Representation, configuration and hybridization.
+  \emph{Chemometrics and Intelligent Laboratory Systems 25:99-145}.
+}
 \seealso{
   \code{\link{rbga.bin}}
 }

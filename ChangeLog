@@ -1,3 +1,8 @@
+version 0.0.7
+-------------------------------------
+* added two general references about genetic algorithms
+* fixed package name in DESCRIPTION
+
 version 0.0.6
 -------------------------------------
 * fixed counting of mutations in rbga.bin
