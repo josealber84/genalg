@@ -1,3 +1,7 @@
+version 0.0.9
+-------------------------------------
+* clarified the meaning of zeroToOneRatio
+
 version 0.0.8
 -------------------------------------
 * removed redundant 'Depends: R' line in DESCRIPTION

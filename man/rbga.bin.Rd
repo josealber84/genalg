@@ -27,10 +27,14 @@ rbga.bin(size=10,
   \item{size}{the number of genes in the chromosome.}
   \item{popSize}{the population size.}
   \item{iters}{the number of iterations.}
-  \item{mutationChance}{the chance that a gene mutates. By default 1/(size+1).}
+  \item{mutationChance}{the chance that a gene in the chromosome mutates. By default 1/(size+1).
+        It affects the convergence rate and the probing of search space: a low chance results
+        in quicker convergence, while a high chance increases the span of the search space.}
   \item{elitism}{the number of chromosomes that are kept into the next generation.
         By default is about 20\% of the population size.}
-  \item{zeroToOneRatio}{the change for a zero for mutations and initialization.}
+  \item{zeroToOneRatio}{the change for a zero for mutations and initialization. This option is used
+        to control the number of set genes in the chromosome. For example, when doing variable
+        selectionm this parameter should be set high to }
   \item{monitorFunc}{Method run after each generation to allow monitoring of the
         optimization}
   \item{evalFunc}{User supplied method to calculate the evaluation function for

@@ -30,7 +30,9 @@ rbga(stringMin=c(), stringMax=c(),
   \item{stringMax}{vector with maximum values for each gene.}
   \item{popSize}{the population size.}
   \item{iters}{the number of iterations.}
-  \item{mutationChance}{the chance that a gene mutates. By default 1/(size+1).}
+  \item{mutationChance}{the chance that a gene in the chromosome mutates. By default 1/(size+1).
+        It affects the convergence rate and the probing of search space: a low chance results
+        in quicker convergence, while a high chance increases the span of the search space.}
   \item{elitism}{the number of chromosomes that are kept into the next generation.
         By default is about 20\% of the population size.}
   \item{monitorFunc}{Method run after each generation to allow monitoring of the
