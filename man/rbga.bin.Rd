@@ -19,8 +19,8 @@ rbga.bin(size=10,
          suggestions=NULL,
          popSize=200, iters=100, 
          mutationChance=NA,
-         elitism=5, zeroToOneRatio=10,
-         monitorFunc=NA, evalFunc=NA
+         elitism=NA, zeroToOneRatio=10,
+         monitorFunc=NULL, evalFunc=NULL,
          showSettings=FALSE, verbose=FALSE)
 }
 \arguments{

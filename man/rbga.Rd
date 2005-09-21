@@ -1,6 +1,5 @@
 \name{rbga}
 \alias{rbga}
-\alias{genalg}
 \title{R Based Genetic Algorithm (floating point chromosome)}
 \description{
   A R based genetic algorithm that optimizes, using a user set evaluation
@@ -19,15 +18,16 @@
 \usage{
 rbga(stringMin=c(), stringMax=c(),
      suggestions=NULL,
-     popSize=200, iters=100, 
+     popSize=200, iters=100,
      mutationChance=NA,
-     elitism=5,
-     monitorFunc=NA, evalFunc=NA
+     elitism=NA,
+     monitorFunc=NULL, evalFunc=NULL,
      showSettings=FALSE, verbose=FALSE)
 }
 \arguments{
   \item{stringMin}{vector with minimum values for each gene.}
   \item{stringMax}{vector with maximum values for each gene.}
+  \item{suggestions}{optional list of suggested chromosomes}
   \item{popSize}{the population size.}
   \item{iters}{the number of iterations.}
   \item{mutationChance}{the chance that a gene in the chromosome mutates. By default 1/(size+1).
@@ -41,7 +41,6 @@ rbga(stringMin=c(), stringMax=c(),
         the given chromosome}
   \item{showSettings}{if true the settings will be printed to screen. By default False.}
   \item{verbose}{if true the algorithm will be more verbose. By default False.}
-  \item{suggestions}{optional list of suggested chromosomes}
 }
 \section{References}{
   C.B. Lucasius and G. Kateman (1993).
