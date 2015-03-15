@@ -1,3 +1,8 @@
+version 0.2.0
+-------------------------------------
+* Michel Ballings becomes maintainer
+* Major bug fix in the selection operator in the rbga function
+
 version 0.1.1
 -------------------------------------
 * now really synchronized docs :(

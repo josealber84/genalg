@@ -71,7 +71,8 @@ monitor <- function(obj) {
     # plot the population
     xlim = c(obj$stringMin[1], obj$stringMax[1]);
     ylim = c(obj$stringMin[2], obj$stringMax[2]);
-    plot(obj$population, xlim=xlim, ylim=ylim, xlab="pi", ylab="sqrt(50)");
+    plot(obj$population, xlim=xlim, ylim=ylim, 
+    xlab="pi", ylab="sqrt(50)");
 }
 
 rbga.results = rbga(c(1, 1), c(5, 10), monitorFunc=monitor, 

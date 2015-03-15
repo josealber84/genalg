@@ -68,8 +68,9 @@ rbga.results = rbga.bin(size=10, mutationChance=0.01, zeroToOneRatio=0.5,
 
 plot(rbga.results)
 
-# in this example the four variables in the IRIS data set are complemented
-# with 36 random variables. Variable selection should find the four original
+# in this example the four variables in the IRIS data 
+# set are complemented with 36 random variables. 
+# Variable selection should find the four original
 # variables back (example by Ron Wehrens).
 \dontrun{
 data(iris)
