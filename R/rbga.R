@@ -153,10 +153,10 @@ rbga <- function(stringMin=c(), stringMax=c(),
                           sortedPopulation[sample(1:popSize, popSize-elitism),];
                   }
                 } else { # if(!crossover)
-                  if (verbose) cat("Crossover not chosen - Using random existent individuals...\n");
+                  if (verbose) cat("Crossover not chosen - Using best individuals...\n");
                         # random fill the rest
                         newPopulation[(elitism+1):popSize,] = 
-                            sortedPopulation[sample(1:popSize, popSize-elitism),];
+                            sortedPopulation[1:(popSize - elitism),];
                 }
                 
                 population = newPopulation;
