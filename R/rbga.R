@@ -8,9 +8,10 @@ rbga <- function(stringMin=c(), stringMax=c(),
                  suggestions=NULL,
                  popSize=200, iters=100, 
                  mutationChance=NA,
+                 crossover=TRUE,
                  elitism=NA,
                  monitorFunc=NULL, evalFunc=NULL,
-                 showSettings=FALSE, verbose=FALSE) {
+                 showSettings=FALSE, verbose=FALSE, ...) {
     if (is.null(evalFunc)) {
         stop("A evaluation function must be provided. See the evalFunc parameter.");
     }
@@ -85,7 +86,7 @@ rbga <- function(stringMin=c(), stringMax=c(),
             if (verbose) cat("Calucating evaluation values... ");
             for (object in 1:popSize) {
                 if (is.na(evalVals[object])) {
-                    evalVals[object] = evalFunc(population[object,]);
+                    evalVals[object] = evalFunc(population[object,], ...);
                     if (verbose) cat(".");
                 }
             }
@@ -122,33 +123,40 @@ rbga <- function(stringMin=c(), stringMax=c(),
                     newEvalVals[1:elitism] = sortedEvaluations$x[1:elitism]
                 } # ok, save nothing
                 
-                # fill the rest by doing crossover
-                if (vars > 1) {
-                    if (verbose) cat("  applying crossover...\n");
-                    for (child in (elitism+1):popSize) {
-                        # ok, pick two random parents
-                        parentProb = dnorm(1:popSize, mean = 0, sd = (popSize/3))
-    			              parentIDs = sample(1:popSize, 2, prob = parentProb)
-                        #parentIDs = sample(1:popSize, 2)
-                        parents = sortedPopulation[parentIDs,];
-                        crossOverPoint = sample(0:vars,1);
-                        if (crossOverPoint == 0) {
-                            newPopulation[child, ] = parents[2,]
-                            newEvalVals[child] = sortedEvaluations$x[parentIDs[2]]
-                        } else if (crossOverPoint == vars) {
-                            newPopulation[child, ] = parents[1,]
-                            newEvalVals[child] = sortedEvaluations$x[parentIDs[1]]
-                        } else {
-                            newPopulation[child, ] = 
-                                c(parents[1,][1:crossOverPoint], 
-                                  parents[2,][(crossOverPoint+1):vars])
-                        }
-                    }
-                } else { # otherwise nothing to crossover
-                    if (verbose) cat("  cannot crossover (#vars=1), using new randoms...\n");
-                    # random fill the rest
-                    newPopulation[(elitism+1):popSize,] = 
-                        sortedPopulation[sample(1:popSize, popSize-elitism),];
+                if(crossover){
+                  # fill the rest by doing crossover
+                  if (vars > 1) {
+                      if (verbose) cat("  applying crossover...\n");
+                      for (child in (elitism+1):popSize) {
+                          # ok, pick two random parents
+                          parentProb = dnorm(1:popSize, mean = 0, sd = (popSize/3))
+      			              parentIDs = sample(1:popSize, 2, prob = parentProb)
+                          #parentIDs = sample(1:popSize, 2)
+                          parents = sortedPopulation[parentIDs,];
+                          crossOverPoint = sample(0:vars,1);
+                          if (crossOverPoint == 0) {
+                              newPopulation[child, ] = parents[2,]
+                              newEvalVals[child] = sortedEvaluations$x[parentIDs[2]]
+                          } else if (crossOverPoint == vars) {
+                              newPopulation[child, ] = parents[1,]
+                              newEvalVals[child] = sortedEvaluations$x[parentIDs[1]]
+                          } else {
+                              newPopulation[child, ] = 
+                                  c(parents[1,][1:crossOverPoint], 
+                                    parents[2,][(crossOverPoint+1):vars])
+                          }
+                      }
+                  } else { # otherwise nothing to crossover
+                      if (verbose) cat("  cannot crossover (#vars=1), using new randoms...\n");
+                      # random fill the rest
+                      newPopulation[(elitism+1):popSize,] = 
+                          sortedPopulation[sample(1:popSize, popSize-elitism),];
+                  }
+                } else { # if(!crossover)
+                  if (verbose) cat("Crossover not chosen - Using random existent individuals...\n");
+                        # random fill the rest
+                        newPopulation[(elitism+1):popSize,] = 
+                            sortedPopulation[sample(1:popSize, popSize-elitism),];
                 }
                 
                 population = newPopulation;
